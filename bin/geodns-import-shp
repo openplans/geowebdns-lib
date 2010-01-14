@@ -1,0 +1,9 @@
+#!/home/ianb/src/geodns-app/bin/python2.6
+# EASY-INSTALL-ENTRY-SCRIPT: 'geodns==0.1dev','console_scripts','geodns-import-shp'
+__requires__ = 'geodns==0.1dev'
+import sys
+from pkg_resources import load_entry_point
+
+sys.exit(
+   load_entry_point('geodns==0.1dev', 'console_scripts', 'geodns-import-shp')()
+)
