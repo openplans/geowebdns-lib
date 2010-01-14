@@ -10,10 +10,10 @@ class SpatialElement(object):
     """Represents a geometry value."""
 
     def __str__(self):
-        return self.desc
+        return self.description
 
     def __repr__(self):
-        return "<%s at 0x%x; %r>" % (self.__class__.__name__, id(self), self.desc)
+        return "<%s at 0x%x; %r>" % (self.__class__.__name__, id(self), self.description)
 
     @property
     def wkt(self):
@@ -30,8 +30,8 @@ class SpatialElement(object):
 class PersistentSpatialElement(SpatialElement):
     """Represents a Geometry value loaded from the database."""
     
-    def __init__(self, desc):
-        self.desc = desc
+    def __init__(self, description):
+        self.description = description
 
 class WKTSpatialElement(SpatialElement, expression.Function):
     """Represents a Geometry value expressed within application code; i.e. in
@@ -42,10 +42,10 @@ class WKTSpatialElement(SpatialElement, expression.Function):
     
     """
     
-    def __init__(self, desc, srid=4326):
-        assert isinstance(desc, basestring)
-        self.desc = desc
-        expression.Function.__init__(self, "GeomFromText", desc, srid)
+    def __init__(self, description, srid=4326):
+        assert isinstance(description, basestring)
+        self.description = description
+        expression.Function.__init__(self, "GeomFromText", description, srid)
 
 class WKBSpatialElement(SpatialElement, expression.Function):
     """Represents a Geometry value as expressed in the OGC Well
@@ -56,10 +56,10 @@ class WKBSpatialElement(SpatialElement, expression.Function):
     
     """
     
-    def __init__(self, desc, srid=4326):
-        assert isinstance(desc, basestring)
-        self.desc = desc
-        expression.Function.__init__(self, "GeomFromWKB", desc, srid)
+    def __init__(self, description, srid=4326):
+        assert isinstance(description, basestring)
+        self.description = description
+        expression.Function.__init__(self, "GeomFromWKB", description, srid)
 
 
 class GeometryBase(TypeEngine):
@@ -81,7 +81,7 @@ class GeometryBase(TypeEngine):
     def bind_processor(self, dialect):
         def process(value):
             if value is not None:
-                return value.desc
+                return value.description
             else:
                 return value
         return process
