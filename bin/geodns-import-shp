@@ -1,9 +1,11 @@
-#!/home/ianb/src/geodns-app/bin/python2.6
-# EASY-INSTALL-ENTRY-SCRIPT: 'geodns==0.1dev','console_scripts','geodns-import-shp'
-__requires__ = 'geodns==0.1dev'
-import sys
-from pkg_resources import load_entry_point
+#!/usr/bin/env python2.6
+import os
 
-sys.exit(
-   load_entry_point('geodns==0.1dev', 'console_scripts', 'geodns-import-shp')()
-)
+activate_this = os.path.abspath(os.path.join(__file__, '../activate_this.py'))
+execfile(activate_this, dict(__file__=activate_this))
+sitecustomize = os.path.abspath(os.path.join(__file__, '../../lib/python2.6/sitecustomize.py'))
+execfile(sitecustomize, dict(__file__=sitecustomize, __name__='sitecustomize'))
+
+# To heck with pkg_resources; there might not be any geodns.egg-info.
+from geodns import importshp
+importshp.main()
