@@ -5,5 +5,5 @@ bin/activate
 bin/activate_this.py
 bin/pip
 bin/easy_install*
-
+*pyc
 
