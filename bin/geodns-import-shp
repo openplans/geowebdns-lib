@@ -2,11 +2,12 @@
 import os
 
 # Make this script portable as per http://groups.google.com/group/silverlining-dev/browse_thread/thread/a42e232057803521
+
 activate_this = os.path.abspath(os.path.join(__file__, '../activate_this.py'))
 execfile(activate_this, dict(__file__=activate_this))
 sitecustomize = os.path.abspath(os.path.join(__file__, '../../lib/python2.6/sitecustomize.py'))
 execfile(sitecustomize, dict(__file__=sitecustomize, __name__='sitecustomize'))
 
-# To heck with pkg_resources; there might not be any geodns.egg-info.
-from geodns import importshp
+# To heck with pkg_resources; there might not be any geowebdns.egg-info.
+from geowebdns import importshp
 importshp.main()

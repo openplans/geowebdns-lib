@@ -1,4 +1,5 @@
 import sys; sys.__plen = len(sys.path)
-../../src/geodns
-../../src/geoalchemy
+/usr/local/lib/python2.6/dist-packages/CmdUtils-0.1.1dev-py2.6.egg
+/home/pw/builds/geowebdns/geowebdns-app/src/geowebdns
+/home/pw/builds/geowebdns/geowebdns-app/lib/python
 import sys; new=sys.path[sys.__plen:]; del sys.path[sys.__plen:]; p=getattr(sys,'__egginsert',0); sys.path[p:p]=new; sys.__egginsert = p+len(new)
